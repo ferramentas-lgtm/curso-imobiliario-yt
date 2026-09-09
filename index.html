@@ -23,8 +23,8 @@
     --r:28px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;overflow-x:clip}
-  body{font-family:var(--fb);background:var(--black);color:var(--white);line-height:1.65;font-size:16px;overflow-x:clip}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:var(--fb);background:var(--black);color:var(--white);line-height:1.65;font-size:16px;overflow-x:hidden}
   img{max-width:100%;display:block}
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
   h1,h2,h3{font-family:var(--ft);font-weight:400;letter-spacing:.015em;line-height:.98;text-transform:uppercase}
@@ -44,22 +44,21 @@
   .glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:.55}
 
   /* HERO */
-  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;background:var(--black);overflow:visible}
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;background:var(--black);overflow:hidden}
   .hero .glow{width:820px;height:820px;background:var(--orange);right:-180px;top:-150px;opacity:.32}
   .nav{display:flex;align-items:center;justify-content:space-between;min-width:0;padding:26px 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
   .nav .logo{font-family:var(--ft);font-size:24px;letter-spacing:.08em;color:var(--orange)}
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-width:0;gap:40px;align-items:start;flex:1;padding:40px 0 0}
-  .hero-copy{padding-bottom:80px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-width:0;gap:40px;align-items:center;flex:1;padding:40px 0 80px}
   .hero-sub{font-size:19px;color:var(--white);font-weight:300;margin:26px 0 14px;max-width:560px}
   .hero-note{font-size:15px;font-style:italic;margin-bottom:30px;max-width:560px}
-  .form-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:var(--r);padding:26px;max-width:520px}
+  .form-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);border-radius:var(--r);padding:26px;max-width:560px}
   .form-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:14px}
-  .form{display:grid;gap:10px}
-  .form input{width:100%;padding:16px 20px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.5);color:var(--white);font-family:var(--fb);font-size:15px;border-radius:14px}
+  .form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .form input{width:100%;min-width:0;padding:16px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.5);color:var(--white);font-family:var(--fb);font-size:15px;border-radius:14px}
   .form input::placeholder{color:#8a8a8a}
   .form input:focus{outline:none;border-color:var(--orange)}
-  .form .btn{margin-top:6px}
-  .hero-visual{position:sticky;top:48px;align-self:start;height:680px;z-index:1}
+  .form .btn{grid-column:1/-1;margin-top:6px}
+  .hero-visual{position:relative;height:680px;transform:translateY(-170px)}
   .hero-visual .frame{position:absolute;inset:0;overflow:visible;background:transparent}
   .hero-visual .frame img{position:absolute;right:-8%;bottom:-20px;width:114%;max-width:none;height:auto;filter:drop-shadow(0 34px 38px rgba(0,0,0,.5));-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.82) 89%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.82) 89%,transparent 100%)}
   .hero-visual .frame::after{content:none}
@@ -150,7 +149,9 @@
     .nav .logo{font-size:20px}
     .wrap{min-width:0;max-width:100%}
     .hero-grid{padding:20px 0 60px}
-    .hero-visual{position:relative;top:auto;align-self:auto;height:440px;order:-1}
+    .form{grid-template-columns:1fr}
+    .form .btn{grid-column:auto}
+    .hero-visual{height:440px;order:-1;transform:none}
     .hero-visual .frame{inset:0}
     .hero-visual .frame img{right:0;bottom:-10px;width:96%}
     .hero-visual .tag{left:10px;bottom:16px}
@@ -177,7 +178,7 @@
       <span>@guilhermemachadooficial</span>
     </nav>
     <div class="hero-grid">
-      <div class="hero-copy">
+      <div>
         <span class="kicker">Curso gratuito · Imobiliária Previsível</span>
         <h1>As 3 alavancas que fazem uma imobiliária vender com <span class="accent">previsibilidade</span> todos os meses</h1>
         <p class="hero-sub">em 6 aulas gratuitas, eu te mostro como estruturar estratégia, gestão e time comercial pra sua operação parar de depender de quem acordou motivado na segunda-feira</p>
